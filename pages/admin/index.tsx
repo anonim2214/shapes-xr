@@ -100,7 +100,7 @@ const Home: NextPage = ({ initData, cookies }) => {
         window.location.pathname = '/';
     }
   return (
-      <div className={"px-6"}>
+      <div  className={"px-6 mt-2 mx-auto"} style={{maxWidth: 1200}}>
           <Header/>
             <button className={"bg-blue-600 text-white rounded-full p-2"} onClick={setInitData}>Set Init Data</button>
             <AdminAddElement onSubmit={handleAdd} editableElement={editableElement}  />
