@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 import AdminElement from "../../src/components/AdminElement/AdminElement";
 import AdminAddElement from "../../src/components/AdminAddElement/AdminAddElement";
 import nookies, {setCookie, destroyCookie} from 'nookies';
+import Header from "../../src/components/Header/Header";
 
 const objs = [
     {
@@ -82,14 +83,14 @@ const Home: NextPage = ({ initData, cookies }) => {
     const handleSaveAllChanges = () => {
         const cookies_local = nookies.get(null);
         setCookie(null, 'init', cookies_local['init_m'], { path: '/' });
-        destroyCookie(null, 'init_m');
+        destroyCookie(null, 'init_m', {path: '/'});
         setIsUnsaved(false);
         destroyCookie(null, 'preview', {path: '/'});
     }
 
     const handleDiscardChanges = () => {
         setIsUnsaved(false);
-        destroyCookie(null, 'init_m');
+        destroyCookie(null, 'init_m', {path: '/'});
         location.reload();
         destroyCookie(null, 'preview', {path: '/'});
     }
@@ -100,6 +101,7 @@ const Home: NextPage = ({ initData, cookies }) => {
     }
   return (
       <div className={"px-6"}>
+          <Header/>
             <button className={"bg-blue-600 text-white rounded-full p-2"} onClick={setInitData}>Set Init Data</button>
             <AdminAddElement onSubmit={handleAdd} editableElement={editableElement}  />
           {isUnsaved &&

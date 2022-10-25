@@ -5,12 +5,14 @@ import Card from "../src/components/Card/Card";
 import Search from "../src/components/Search/Search";
 import Dropdown from "../src/components/Dropdown/Dropdown";
 import Preview from "../src/components/Preview/Preview";
+import Header from "../src/components/Header/Header";
 
 const Home: NextPage = ({initData, tags = [], isPreview}) => {
     const [search, setSearch] = useState('');
     const [selectedTags, setSelectedTags] = useState([]);
   return (
       <div className={"px-6 mt-2 mx-auto"} style={{maxWidth: 1200}}>
+          <Header/>
           {isPreview && <Preview/>}
           <div className={"flex w-full"}>
               {tags && tags.length > 0 && (<>
@@ -22,7 +24,7 @@ const Home: NextPage = ({initData, tags = [], isPreview}) => {
 
         <div className={"mt-2 grid grid-flow-row-dense grid-cols-3 gap-10"}>
             {initData
-                .filter(el => selectedTags.length === 0 || !selectedTags.some(tag => !el.tags.split(' ').includes(tag)))
+                .filter(el => selectedTags.length === 0 || selectedTags.some(tag => el.tags.split(' ').includes(tag)))
                 .filter(el => el.name.toLowerCase().includes(search.toLowerCase()))
                 .sort((el1, el2) => el1.order - el2.order)
                 .map(el => (

@@ -2,13 +2,16 @@ import type { NextPage } from 'next'
 import {useEffect, useState} from "react";
 import nookies from "nookies";
 import Preview from "../../../src/components/Preview/Preview";
+import Header from "../../../src/components/Header/Header";
 
 const Item: NextPage = ({item, isPreview}) => {
     useEffect(() => {
         if (!item) { window.location.pathname = '/'}
     }, []);
     return (
+
         <div className={"px-6 mt-2 mx-auto"} style={{maxWidth: 1200}}>
+            <Header/>
             {isPreview && <Preview/>}
             <div className={"grid grid-flow-row-dense grid-cols-2 gap-10"}>
                 <div style={{backgroundImage: `url("${item?.image}")`, backgroundPosition: "center", backgroundSize: "cover" , height: 300}}/>
