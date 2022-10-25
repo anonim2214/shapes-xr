@@ -16,7 +16,7 @@ const Item: NextPage = ({item, isPreview}) => {
                     <p>{`${item?.name} ${item?.price}`}</p>
                     <p>{item?.description}</p>
                     <div className={"flex mt-2"}>
-                        {item?.tags.split(' ').map(el => <p style={{width: 'fit-content'}} className={"border-2 border-blue-400 rounded-full p-2"}>{el}</p>)}
+                        {item?.tags.split(' ').map(el => <p key={el} style={{width: 'fit-content'}} className={"border-2 border-blue-400 rounded-full p-2"}>{el}</p>)}
                     </div>
                 </div>
             </div>

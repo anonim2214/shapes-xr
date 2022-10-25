@@ -47,7 +47,7 @@ export default function AdminAddElement ({onSubmit, editableElement}) {
         ['description', description, setDescription], ['image', image, setImage], ['tags', tags, setTags]];
     return (
         <div>
-            {mapper.map(el => (<div className="mb-6">
+            {mapper.map(el => (<div className="mb-6" key={el[0].toString()}>
                 <label htmlFor={el[0]} className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                     {el[0]}
                 </label>
