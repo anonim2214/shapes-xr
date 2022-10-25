@@ -7,5 +7,11 @@ module.exports = {
   plugins: [
     require("flowbite/plugin")
   ],
-  theme: {},
+  theme: {
+    extend: {
+      scale: {
+        '110': '1.10',
+      }
+    }
+  },
 };
